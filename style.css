@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #222222;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+#stage, #hoverLabel, #clickLabel {
+    background-color: rgba(36, 42, 56, 100);
+    width: 1920px;
+}
+
+#stage {
+    height: 1080px;
+}
+
+/*
+#hoverLabel, #clickLabel {
+    margin-top: 5px;
+    height: 20px;
+}
+*/
+
+.playerLeft {
+    background-color: rgba(249, 237, 102, 1);
+    position: absolute;
+    border-radius: 100%;
+}
+
+.playerRight {
+    background-color: rgba(138, 227, 227, 1);
+    position: absolute;
+    border-radius: 100%;
+}
+
+.hover {
+    background-color: gray;
+}
+
+.clicked {
+    background-color: red;
+}
