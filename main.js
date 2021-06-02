@@ -1,29 +1,40 @@
 let stageHeight, stageWidth;
 let stage;
+let cumulateHand;
 
 $(function () {
     stage = $('#stage');
     stageHeight = $('#stage').height();
     stageWidth = $('#stage').width();
+    prepareData();
     drawDots();
 });
 
 function prepareData() {
 
     //Matches von verschiedene Händigkeit
-    cumulateState = gmynd.cumulateData(data2003, "winner_hand","loser_hand");
-    cumulateState = gmynd.mergeData(cumulateState, positionData, "state");
+    let matchesRL = gmynd.findAllByValue(data2003, "winner_hand", "R");
+    matchesRL = gmynd.findAllByValue(matchesRL, "loser_hand", "L");
+    console.log(matchesRL);
+
+    let matchesLR = gmynd.findAllByValue(data2003, "winner_hand", "L");
+    matchesLR = gmynd.findAllByValue(matchesLR, "loser_hand", "R");
+    console.log(matchesLR);
+
+
+    //cumulateHand = gmynd.cumulateData(data2003, "winner_hand","loser_hand");
+    //console.log(cumulateHand);
 
 }
 
 
 function drawDots () {
 
-data2000.forEach(player => {
+data2003.forEach(player => {
     if (player.winner_hand != player.loser_hand) {
     let date = player.tourney_date;
     let month = date.toString().charAt(4)+date.toString().charAt(5);
-    console.log (month)
+    //console.log (month)
 
 //for (let i=0; data2000.length; i++) {
 

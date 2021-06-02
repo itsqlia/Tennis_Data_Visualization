@@ -1,4 +1,4 @@
-let data =
+let data2003 =
 [
     {
       "tourney_name": "Auckland",
