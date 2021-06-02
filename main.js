@@ -12,7 +12,7 @@ $(function () {
 
 function prepareData() {
 
-    //Matches von verschiedene Händigkeit
+    //Matches von verschiedene Händigkeit, 2003
     let matchesRL = gmynd.findAllByValue(data2003, "winner_hand", "R");
     matchesRL = gmynd.findAllByValue(matchesRL, "loser_hand", "L");
     console.log(matchesRL);
@@ -21,6 +21,8 @@ function prepareData() {
     matchesLR = gmynd.findAllByValue(matchesLR, "loser_hand", "R");
     console.log(matchesLR);
 
+    let allMatches03 = matchesRL.concat(matchesLR);
+    console.log(allMatches03);
 
     //cumulateHand = gmynd.cumulateData(data2003, "winner_hand","loser_hand");
     //console.log(cumulateHand);
