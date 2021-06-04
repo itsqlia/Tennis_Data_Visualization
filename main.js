@@ -102,7 +102,7 @@ function prepareData() {
     ...allMatches10,
   ];
   console.log(data);
-  gmynd.saveData(data, "allMatches.json");
+  //gmynd.saveData(data, "allMatches.json");
 }
 
 
