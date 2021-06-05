@@ -6,7 +6,7 @@ body {
     margin: 0;
     background-color: #222222;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: Avenir Next, sans-serif;
 }
 
 #stage, #hoverLabel, #clickLabel {
@@ -18,12 +18,32 @@ body {
     height: 1080px;
 }
 
-/*
-#hoverLabel, #clickLabel {
-    margin-top: 5px;
-    height: 20px;
+.button{
+    position: absolute;
+    background-color: #242A38;
+    color: white;
+    border: none;
+    font-size: 30px;
+    font-family: Avenir Next, Montserrat,  sans-serif;
 }
-*/
+
+.matches {
+    top: 50px;
+    left: 50px;
+    color: white;
+}
+
+.duration {
+    top: 50px;
+    left: 190px;
+    color: rgba(255, 255, 255, 50);
+}
+
+.winners {
+    top: 50px;
+    left: 330px;
+    color: rgba(255, 255, 255, 50);
+}
 
 .playerLeft {
     background-color: rgba(249, 237, 102, 1);
