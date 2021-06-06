@@ -36,22 +36,16 @@ body {
 .duration {
     top: 50px;
     left: 190px;
-    color: rgba(255, 255, 255, 50);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .winners {
     top: 50px;
     left: 330px;
-    color: rgba(255, 255, 255, 50);
+    color: rgba(255, 255, 255, 0.5);
 }
 
-.playerLeft {
-    background-color: rgba(249, 237, 102, 1);
-    position: absolute;
-    border-radius: 100%;
-}
-
-.playerRight {
+.finalWinners {
     background-color: rgba(138, 227, 227, 1);
     position: absolute;
     border-radius: 100%;
