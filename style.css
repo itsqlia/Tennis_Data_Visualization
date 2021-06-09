@@ -6,7 +6,7 @@ body {
     margin: 0;
     background-color: #222222;
     color: white;
-    font-family: Avenir Next, sans-serif;
+    font-family: "Helvetica", sans-serif;
 }
 
 #stage, #hoverLabel, #clickLabel {
@@ -24,7 +24,7 @@ body {
     color: white;
     border: none;
     font-size: 30px;
-    font-family: Avenir Next, Montserrat,  sans-serif;
+    font-family: Univers, sans-serif;
 }
 
 .matches {
@@ -35,13 +35,13 @@ body {
 
 .duration {
     top: 50px;
-    left: 190px;
+    left: 200px;
     color: rgba(255, 255, 255, 0.5);
 }
 
 .winners {
     top: 50px;
-    left: 330px;
+    left: 350px;
     color: rgba(255, 255, 255, 0.5);
 }
 
