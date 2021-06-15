@@ -2,11 +2,32 @@
     box-sizing: border-box;
 }
 
+.header {
+    position: absolute;
+width: 600px;
+height: 103px;
+left: 1320px;
+top: 40px;
+
+font-family: 'Montserrat', sans-serif;
+font-size: 39.06px;
+line-height: 51px;
+
+color: rgba(255, 255, 255, 0.8);
+}
+
+.button {
+    position: absolute;
+    background-color: #242A38;
+    color: white;
+    border: none;
+    font-size: 32px;
+    font-family: "Montserrat", sans-serif;
+}
+
 body {
     margin: 0;
     background-color: #222222;
-    color: white;
-    font-family: "Helvetica", sans-serif;
 }
 
 #stage, #hoverLabel, #clickLabel {
@@ -18,34 +39,33 @@ body {
     height: 1080px;
 }
 
-.button{
-    position: absolute;
-    background-color: #242A38;
-    color: white;
-    border: none;
-    font-size: 30px;
-    font-family: Univers, sans-serif;
-}
-
 .matches {
-    top: 50px;
+    top: 80px;
     left: 50px;
     color: white;
 }
 
-.duration {
-    top: 50px;
-    left: 200px;
+.matchLengths {
+    top: 80px;
+    left: 250px;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.winners {
-    top: 50px;
-    left: 350px;
+.tourneyWinners {
+    top: 80px;
+    left: 510px;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.finalWinners {
+.year03 {
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    top: 1000px;
+    left: 50px;
+    color: white
+}
+
+.playerWinner {
     background-color: rgba(138, 227, 227, 1);
     position: absolute;
     border-radius: 100%;
