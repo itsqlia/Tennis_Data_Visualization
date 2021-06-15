@@ -21,8 +21,9 @@ color: rgba(255, 255, 255, 0.8);
     background-color: #242A38;
     color: white;
     border: none;
+    font-weight: bold ;
     font-size: 32px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Optima", sans-serif;
 }
 
 body {
@@ -40,19 +41,19 @@ body {
 }
 
 .matches {
-    top: 80px;
+    top: 40px;
     left: 50px;
     color: white;
 }
 
 .lengths {
-    top: 80px;
+    top: 40px;
     left: 280px;
     color: rgba(255, 255, 255, 0.5);
 }
 
 .winners {
-    top: 80px;
+    top: 40px;
     left: 580px;
     color: rgba(255, 255, 255, 0.5);
 }
@@ -92,13 +93,60 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
-
 .year03 {
-    font-family: "Roboto", sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     top: 1000px;
     left: 50px;
     color: white
+}
+
+.year04 {
+    font-size: 28px;
+    top: 1000px;
+    left: 290px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year05 {
+    font-size: 28px;
+    top: 1000px;
+    left: 530px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year06 {
+    font-size: 28px;
+    top: 1000px;
+    left: 770px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year07 {
+    font-size: 28px;
+    top: 1000px;
+    left: 1010px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year08 {
+    font-size: 28px;
+    top: 1000px;
+    left: 1250px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year09 {
+    font-size: 28px;
+    top: 1000px;
+    left: 1490px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.year10 {
+    font-size: 28px;
+    top: 1000px;
+    left: 1730px;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .playerWinner {
