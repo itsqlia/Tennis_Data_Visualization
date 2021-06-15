@@ -16,7 +16,7 @@ line-height: 51px;
 color: rgba(255, 255, 255, 0.8);
 }
 
-.button {
+.btn {
     position: absolute;
     background-color: #242A38;
     color: white;
@@ -45,21 +45,57 @@ body {
     color: white;
 }
 
-.matchLengths {
+.lengths {
     top: 80px;
-    left: 250px;
+    left: 280px;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.tourneyWinners {
+.winners {
     top: 80px;
-    left: 510px;
+    left: 580px;
     color: rgba(255, 255, 255, 0.5);
 }
+
+.all {
+    font-size: 30px;
+    top: 410px;
+    left: 50px;
+    color: white;
+}
+
+.hard {
+    font-size: 30px;
+    top: 460px;
+    left: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.clay {
+    font-size: 28px;
+    top: 510px;
+    left: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.grass {
+    font-size: 28px;
+    top: 560px;
+    left: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.carpet {
+    font-size: 28px;
+    top: 610px;
+    left: 50px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
 
 .year03 {
     font-family: "Roboto", sans-serif;
-    font-size: 25px;
+    font-size: 30px;
     top: 1000px;
     left: 50px;
     color: white

@@ -1,25 +1,33 @@
 let stageHeight, stageWidth;
 let stage;
-let matchesViewOn = true;
-let matchLengthsViewOn = false;
-let tourneyWinnersViewOn = false;
+let body = $('body');
 let groupedByDate; 
 let groupedByFinalWinners;
 
+let showMatches; 
+showMatches = true;
+
+let showLengths;
+showLengths = false;
+
+let showWinners; 
+showWinners = false;
+
+
 $(function () {
+  $('.all').hide();
+  $('.hard').hide();
+  $('.clay').hide();
+  $('.grass').hide();
+  $('.carpet').hide();
+
   stage = $('#stage');
   stageHeight = stage.height();
   stageWidth = stage.width();
   prepareData();
   drawMatches();
-  //drawMatchLengths();
-  //drawTourneyWinners();
-
-  /*
-  if (matchesViewOn == true) {
-    matchesView();
-  }*/
-
+  drawLengths();
+  drawWinners();
 });
 
 function prepareData() {
@@ -62,6 +70,14 @@ function prepareData() {
 // ------------------------------------------------------------------------------------------------------------------
 
 function drawMatches(year = 2003) {
+  showMatches = true;
+  $('.all').hide();
+  $('.hard').hide();
+  $('.clay').hide();
+  $('.grass').hide();
+  $('.carpet').hide();
+
+
   let yearData = groupedByDate[year];
   console.log(yearData);
 
@@ -76,7 +92,8 @@ function drawMatches(year = 2003) {
 
       const xMatch = 250 + (parseInt(month) * 30);
       const yMatch = 1080 - (j * 15) - 30;
-      const oneMatchPerRow = 2;
+      const oneMatchPerRow = match.month / 2;
+      console.log(oneMatchPerRow);
       
       let dot = $('<div></div>');
       dot.addClass("matches");
@@ -117,7 +134,14 @@ function drawMatches(year = 2003) {
   }
 }
 
-function drawMatchLengths () {
+function drawLengths () {
+showLengths = true;
+$('.all').show();
+$('.hard').show();
+$('.clay').show();
+$('.grass').show();
+$('.carpet').show();
+
   const lengthX = stageWidth / 2;
   const lengthY = stageHeight / 2;
 
@@ -153,7 +177,13 @@ function drawMatchLengths () {
 
   )};
 
-function drawTourneyWinners() {
+function drawWinners() {
+  showWinners = true;
+  $('.all').hide();
+  $('.hard').hide();
+  $('.clay').hide();
+  $('.grass').hide();
+  $('.carpet').hide();
 
   let i = 0;
 
@@ -197,69 +227,191 @@ function drawTourneyWinners() {
 
 // -- Screen Switches ---------------------------------------------------------------------------------------------
 
-/*
-function matchesView() {
-  matchesViewOn = true;
-  matchLengthsViewOn = false;
-  tourneyWinnersViewOn = false;
 
+function matchesView() {
+  stage.empty();
   drawMatches();
 
   $('.matches').css({
     'color': "white",
   });
 
-  $('.matchLengths').css({
+  $('.lengths').css({
     'color': "rgba(255, 255, 255, 0.5)",
   });
 
-  $('.tourneyWinners').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-}
-
-function matchLengthsView() {
-  matchesViewOn = false;
-  matchLengthsViewOn = true;
-  tourneyWinnersViewOn = false;
-
-  drawMatchLengths();
-
-  $('.matches').css({
-    'color': "white",
-  });
-
-  $('.matchLengths').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.tourneyWinners').css({
+  $('.winners').css({
     'color': "rgba(255, 255, 255, 0.5)",
   });
 
 }
 
-function tourneyWinnersView() {
-  matchesViewOn = false;
-  matchLengthsViewOn = false;
-  tourneyWinnersViewOn = true;
-
-  drawTourneyWinners();
-
+function lengthsView() {
+  stage.empty();
+  drawLengths();
 
   $('.matches').css({
     'color': "rgba(255, 255, 255, 0.5)",
   });
 
-  $('.matchLengths').css({
+  $('.lengths').css({
+    'color': "white" ,
+  });
+
+  $('.winners').css({
     'color': "rgba(255, 255, 255, 0.5)",
   });
 
-  $('.tourneyWinners').css({
-    'color': "white",
+}
+
+function winnersView() {
+  stage.empty();
+
+  drawWinners();
+
+  $('.matches').css({
+    'color': "rgba(255, 255, 255, 0.5)",
   });
 
-  $('.inner').fadeIn();
+  $('.lengths').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.winners').css({
+    'color': "white",
+  });
 };
-*/
+function allView() {
+  stage.empty();
+
+  //$('.allSurface').show();
+  
+  $('.all').css({
+    'color': "rgba(255, 255, 255, 1)",
+  });
+
+  $('.hard').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.clay').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.grass').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.carpet').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+};
+
+function hardView() {
+  stage.empty();
+
+  //$('.hardSurface').show();
+  
+  $('.all').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.hard').css({
+    'color': "rgba(121, 209, 209, 1)",
+  });
+
+  $('.clay').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.grass').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.carpet').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+};
+
+function clayView() {
+  stage.empty();
+
+  //$('.claySurface').show();
+  
+  $('.all').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.hard').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.clay').css({
+    'color': "rgba(212, 95, 16, 1)",
+  });
+
+  $('.grass').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.carpet').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+};
+
+function grassView() {
+  stage.empty();
+
+  //$('.grassSurface').show();
+  
+  $('.all').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.hard').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.clay').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.grass').css({
+    'color': "rgba(171, 255, 132, 1",
+  });
+
+  $('.carpet').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+};
+
+function carpetView() {
+  stage.empty();
+
+  //$('.carpetSurface').show();
+  
+  $('.all').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.hard').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.clay').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.grass').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.carpet').css({
+    'color': "rgba(40, 86,179, 1)",
+  });
+
+};
