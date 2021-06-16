@@ -162,6 +162,12 @@ body {
     border-radius: 100%;
 }
 
+.playerLoser {
+    background-color: rgba(254, 245, 140, 1);
+    position: absolute;
+    border-radius: 100%;
+}
+
 .hover {
     background-color: gray;
 }
