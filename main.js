@@ -15,12 +15,6 @@ showWinners = false;
 
 
 $(function () {
-  $('.all').hide();
-  $('.hard').hide();
-  $('.clay').hide();
-  $('.grass').hide();
-  $('.carpet').hide();
-
   stage = $('#stage');
   stageHeight = stage.height();
   stageWidth = stage.width();
@@ -143,66 +137,66 @@ function drawMatches(year = 2003) {
 }
 
 function drawLengths () {
-showLengths = true;
-
-$('.all').show();
-$('.hard').show();
-$('.clay').show();
-$('.grass').show();
-$('.carpet').show();
-
-$('.year03').show();
-$('.year04').show();
-$('.year05').show();
-$('.year06').show();
-$('.year07').show();
-$('.year08').show();
-$('.year09').show();
-$('.year10').show();
-
-  const lengthX = stageWidth / 2;
-  const lengthY = stageHeight / 2;
-
-  cumulatedLengths.forEach(lengths => {
-
-    let angle = (lengths.tourneyMonth - 2003) * 2.9;
-    angle = gmynd.radians(angle - 90);
-    const rSurface = 25;
-
-    let xSurface = (lengthX + (Math.cos(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // cosinus vom winkel
-    let ySurface = (lengthY + (Math.sin(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // sinus vom winkel
-
-    let surfaceDot = $('<div></div>');
-    surfaceDot.addClass("Lengths");
-    let surfaceDotColor;
-
-    if(length.surface == "Hard") {
-      surfaceDotColor = '#79D1D1';
-    } else if (length.surface == "Clay") {
-      surfaceDotColor = '#D45F10'
-    } else if (length.surface == "Grass") {
-      surfaceDotColor = '#ABE184'
-    } else if (length.surface == "Carpet") {
-      surfaceDotColor = '#2856B3'
+  showLengths = true;
+  
+  $('.all').show();
+  $('.hard').show();
+  $('.clay').show();
+  $('.grass').show();
+  $('.carpet').show();
+  
+  $('.year03').show();
+  $('.year04').show();
+  $('.year05').show();
+  $('.year06').show();
+  $('.year07').show();
+  $('.year08').show();
+  $('.year09').show();
+  $('.year10').show();
+  
+    const lengthX = stageWidth / 2;
+    const lengthY = stageHeight / 2;
+  
+    cumulatedLengths.forEach(lengths => {
+  
+      let angle = (lengths.tourneyMonth - 2003) * 2.9;
+      angle = gmynd.radians(angle - 90);
+      const rSurface = 25;
+  
+      let xSurface = (lengthX + (Math.cos(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // cosinus vom winkel
+      let ySurface = (lengthY + (Math.sin(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // sinus vom winkel
+  
+      let surfaceDot = $('<div></div>');
+      surfaceDot.addClass("Lengths");
+      let surfaceDotColor;
+  
+      if(length.surface == "Hard") {
+        surfaceDotColor = '#79D1D1';
+      } else if (length.surface == "Clay") {
+        surfaceDotColor = '#D45F10'
+      } else if (length.surface == "Grass") {
+        surfaceDotColor = '#ABE184'
+      } else if (length.surface == "Carpet") {
+        surfaceDotColor = '#2856B3'
+      }
+  
+  
+      surfaceDot.css({
+        'height': rSurface * 2,
+        'width': rSurface * 2,
+        'left': xSurface,
+        'top': ySurface,
+        'position': 'absolute',
+        'border-radius': '100%',
+        'background-color': surfaceDotColor,
+    });
+   
+    stage.append(surfaceDot);
+  
+  
     }
-
-
-    surfaceDot.css({
-      'height': rSurface * 2,
-      'width': rSurface * 2,
-      'left': xSurface,
-      'top': ySurface,
-      'position': 'absolute',
-      'border-radius': '100%',
-      'background-color': surfaceDotColor,
-  });
- 
-  stage.append(surfaceDot);
-
-
-  }
-
-  )};
+  
+    )};
 
 function drawWinners() {
   showWinners = true;
@@ -456,3 +450,40 @@ function carpetView() {
 
 // -- Years Buttons ---------------
 
+function year03View() {
+  stage.empty();
+
+  //$('.carpetSurface').show();
+  
+  $('.year03').css({
+    'color': "white",
+  });
+
+  $('.year04').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year05').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year06').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year07').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year08').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year09').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+
+  $('.year10').css({
+    'color': "rgba(255, 255, 255, 0.5)",
+  });
+};
