@@ -149,6 +149,13 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.years {
+    font-size: 28px;
+    top: 1000px;
+    left: 50px;
+    color: white
+}
+
 .playerWinner {
     background-color: rgba(138, 227, 227, 1);
     position: absolute;

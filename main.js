@@ -61,7 +61,7 @@ function prepareData() {
   //console.log(groupedByTourneyWinners);
 };
 
-// ------------------------------------------------------------------------------------------------------------------
+// --- Screen 1 -------------------------------------------------------------------------------------------------------------
 
 function drawMatches(year = 2003) {
   showMatches = true;
@@ -88,53 +88,89 @@ function drawMatches(year = 2003) {
     // get array of matches for this month
     let matches = yearData[month];
    
-    const rMatch = 6;
-    const circleGap = rMatch;
+    const rMatch = 8;
+    const circleGap = rMatch * 2;
+    
+    let leftWinCount = 0;
+    let rightWinCount = 0;
 
+    let leftLoserCount = 0;
+    let rightLoserCount = 0;
+    
     matches.forEach((match, j) => {
 
-      const xMatch = 250 + (parseInt(month) * 30);
-      const yMatch = 1080 - (j * 15) - 30;
+      let xMatch = 200 + (parseInt(month) * 100);
+      let yMatch = 0;
       const oneMatchPerRow = match.month / 2;
       
-      let matchDot = $('<div></div>');
-      matchDot.addClass("matches");
-      let playerColor = 'rgba(138, 227, 227, 1)';
-      let playerBorder;
+      let winnerDot = $('<div></div>'); //winnerdot
+      let loserDot = $('<div></div>'); //loserdot
+
+      winnerDot.addClass("winner");
+      let winnerColor = 'rgba(138, 227, 227, 1)';
+      
+      loserDot.addClass("loser");
+      let loserColor = '2px solid' + 'rgba(249, 237, 102, 1)';
 
 
       if (match.winner_hand === "L") {
-        playerColor = 'rgba(249, 237, 102, 1)'
-      }
-      else if (match.winner_hand === "R") {
-        playerColor = 'rgba(138, 227, 227, 1)'
-      }
+        winnerColor = 'rgba(249, 237, 102, 1)';
+        yMatch = 1050 - (leftWinCount * 20);
+        leftWinCount++;
+
+        
+        leftLoserCount++
+      } else if (match.winner_hand === "R") {
+        winnerColor = 'rgba(138, 227, 227, 1)';
+        yMatch = 1050 - (rightWinCount * 20);
+        xMatch+= 25;
+        rightWinCount++;
+
+
+        rightLoserCount++;
+      } 
       
       /*
       else if (match.loser_hand === "L") {
-        playerBorder = '2px solid' + color;
+        playerBorder = '2px solid' + playerColor;
         playerColor = 'rgba(249, 237, 102, 1)'
-      }
-      else if (match.loser_hand === "R") {
-        playerBorder = '2px solid' + color;
+      } else if (match.loser_hand === "R") {
+        playerBorder = '2px solid' + playerColor;
         playerColor = 'rgba(138, 227, 227, 1)'
       }
       */
 
-      matchDot.css({
+      winnerDot.css({
         'height': rMatch * 2,
         'width': rMatch * 2,
-        'background-color': playerColor,
+        'background-color': winnerColor,
         'position': 'absolute',
         'left': xMatch,
         'top': yMatch,
         'border-radius': '100%'
       });
 
-      $('#stage').append(matchDot);
+      /*
+      loserDot.css({
+        'height': rMatch * 2,
+        'width': rMatch * 2,
+        'background-color': loserColor,
+        'position': 'absolute',
+        'left': xMatch,
+        'top': yMatch,
+        'border-radius': '100%'
+      });
+      */
+
+      $('#stage').append(winnerDot);
+      //$('#stage').append(loserDot);
+
     });
   }
-}
+};
+
+
+// --- Screen 2 -------------------------------------------
 
 function drawLengths () {
   showLengths = true;
@@ -197,6 +233,9 @@ function drawLengths () {
     }
   
     )};
+
+
+// --- Screen 3 -------------------------------------------
 
 function drawWinners() {
   showWinners = true;
@@ -449,12 +488,23 @@ function carpetView() {
 };
 
 // -- Years Buttons ---------------
+/*
+$('.year-button').click(buttonSwapping);
+function buttonSwapping(event)  {
+  $('.year-button').css //mach transparent
+  let target = $(event.target)
+  target.css // mach hell
+  console.log(parseInt(target.text()));
+  }
+*/
+
 
 function year03View() {
   stage.empty();
 
   //$('.carpetSurface').show();
-  
+
+
   $('.year03').css({
     'color': "white",
   });
