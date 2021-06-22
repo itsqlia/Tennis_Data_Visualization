@@ -2,16 +2,26 @@ let stageHeight, stageWidth;
 let stage;
 let body = $('body');
 let groupedByDate; 
-let groupedByFinalWinners;
+let groupedByTourney;
 
+// -- const for Screen: Matches ---------------------------------------------------------------------------------------------
 const rMatch = 5;
 const lowerBorder = 1020;
 const monthOffSet = 180;
-const matchOffSet = 70;
-const leftWinColor = 'rgba(254, 245, 140, 1)';
-const rightWinColor = 'rgba(166, 242, 242, 1)';
+const matchOffSet = 20;
+const leftColor = 'rgba(254, 245, 140, 1)';
+const rightColor = 'rgba(166, 242, 242, 1)';
 const leftLoseColor = 'rgba(254, 245, 140, 0.25)';
 const rightLoseColor = 'rgba(166, 242, 242, 0.25)';
+
+// -- const for Screen: Lengths ---------------------------------------------------------------------------------------------
+const rSurface = 3;
+const surfaceColor = {
+hard : 'rgba(255, 255, 255, 1)',
+clay : 'rgba(212, 95, 16, 1)',
+grass : 'rgba(171, 255, 132, 1',
+carpet : 'rgba(40, 86,179, 1)',
+};
 
 let showMatches; 
 showMatches = true;
@@ -22,7 +32,6 @@ showLengths = false;
 let showWinners; 
 showWinners = false;
 
-
 $(function () {
   stage = $('#stage');
   stageHeight = stage.height();
@@ -30,7 +39,7 @@ $(function () {
   prepareData();
   drawMatches();
   drawLengths();
-  drawWinners();
+  drawTourneys ();
 });
 
 function prepareData() {
@@ -45,30 +54,23 @@ function prepareData() {
     match.tourneyMonth = month;
   });
 
-  // -- Screen: Matches ---------------------------------------------------------------------------------------------
-  
+  // -- Screen: Matches & Lengths ---------------------------------------------------------------------------------------------
+  data = gmynd.filterPropType(data, "minutes", "Number");
+
   groupedByDate = gmynd.groupData(data, ["tourneyYear", "tourneyMonth"]);
   //console.log ("date");
   //console.log (groupedByDate);
 
-  
-  // -- Screen: Match Lengths ---------------------------------------------------------------------------------------------
 
-  data = gmynd.filterPropType(data, "minutes", "Number");
+  // -- Screen: Tourneys ---------------------------------------------------------------------------------------------
 
-  groupedMatchLengths = gmynd.groupData (data, 'tourneyYear');
-  //console.log(groupedMatchLengths);
-
-
-  // -- Screen: Tourney Winners ---------------------------------------------------------------------------------------------
-
-  finals = gmynd.findAllByValue(data, "round", "F" );
+  finals = gmynd.findAllByValue(data, "round", "F");
   console.log("Finals");
   console.log(finals);
 
-  groupedByTourneyWinners = gmynd.groupData(data, ["tourneyYear", "winner_hand"]);
-  //console.log("Tourney Winners");
-  //console.log(groupedByTourneyWinners);
+  groupedByTourneys = gmynd.groupData(data, ["tourneyYear", "winner_hand"]);
+  //console.log("Tourneys");
+  //console.log(groupedByTourneys);
 };
 
 // --- Screen 1 -------------------------------------------------------------------------------------------------------------
@@ -80,16 +82,6 @@ function drawMatches(year = 2003) {
   $('.clay').hide();
   $('.grass').hide();
   $('.carpet').hide();
-
-  $('.year03').hide();
-  $('.year04').hide();
-  $('.year05').hide();
-  $('.year06').hide();
-  $('.year07').hide();
-  $('.year08').hide();
-  $('.year09').hide();
-  $('.year10').hide();
-
 
   let yearData = groupedByDate[year];
   console.log(yearData);
@@ -113,13 +105,13 @@ function drawMatches(year = 2003) {
       leftiesDot.addClass("lefties");
       rightiesDot.addClass("righties");
       
-      yCoord = lowerBorder - (matchCount * 20);
+      let yCoord = lowerBorder - (matchCount * 20);
       
       if (match.winner_hand === "L") {
-        leftiesColor = leftWinColor;
+        leftiesColor = leftColor;
         rightiesColor = rightLoseColor;
       } else if (match.winner_hand === "R") {
-        rightiesColor = rightWinColor;
+        rightiesColor = rightColor;
         leftiesColor = leftLoseColor;
       };
 
@@ -153,7 +145,7 @@ function drawMatches(year = 2003) {
 
 // --- Screen 2 -------------------------------------------
 
-function drawLengths () {
+function drawLengths (year = 2003) {
   showLengths = true;
   
   $('.all').show();
@@ -170,13 +162,54 @@ function drawLengths () {
   $('.year08').show();
   $('.year09').show();
   $('.year10').show();
+
+  let yearData = groupedByDate[year];
   
-  };
+  for (let month in yearData) {
+    let surfaceCount = 0;
+
+    let lengths = yearData[month]
+
+    console.log(lengths);
+    lengths.forEach((lengths, k) =>{
+      surfaceCount++
+
+      let xSurface = (parseInt(month) * monthOffSet) - 120;
+      let ySurface = lowerBorder - (surfaceCount * 15)
+
+      let surfaceDot = $('<div></div>');
+      surfaceDot.addClass("surface");
+
+     
+      if (lengths.surface === "Hard") {
+        surfaceColor.hard
+      } else if (lengths.surface === "Clay") {
+        surfaceColor.clay
+      } else if (lengths.surface === "Grass") {
+        surfaceColor.grass
+      } else if (lengths.surface === "Carpet") {
+        surfaceColor.carpet
+      }; 
+
+    surfaceDot.css({
+      'height': rSurface * 2,
+      'width': rSurface * 2,
+      'background-color': surfaceColor,
+      'position': 'absolute',
+      'left': xSurface,
+      'top': ySurface,
+      'border-radius': '100%'
+    });
+
+    $('#stage').append(surfaceDot);
+    });
+  }
+};
 
 
 // --- Screen 3 -------------------------------------------
 
-function drawWinners() {
+function drawTourneys() {
   showWinners = true;
   $('.all').hide();
   $('.hard').hide();
@@ -195,9 +228,9 @@ function drawWinners() {
 
   let i = 0;
 
-  for (let key in groupedByFinalWinners) {
+  for (let key in groupedByTourney) {
 
-    let finalWinners = groupedByFinalWinners[key];
+    let finalWinners = groupedByTourney[key];
 
     finalWinners.forEach((player, j) => {
 
@@ -244,11 +277,11 @@ function matchesView() {
   });
 
   $('.lengths').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
-  $('.winners').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+  $('.tourneys').css({
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
 };
@@ -258,15 +291,15 @@ function lengthsView() {
   drawLengths();
 
   $('.matches').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
   $('.lengths').css({
     'color': "white" ,
   });
 
-  $('.winners').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+  $('.tourneys').css({
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
 };
@@ -274,17 +307,17 @@ function lengthsView() {
 function winnersView() {
   stage.empty();
 
-  drawWinners();
+  drawTourneys();
 
   $('.matches').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
   $('.lengths').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.25)",
   });
 
-  $('.winners').css({
+  $('.tourneys').css({
     'color': "white",
   });
 };
@@ -301,19 +334,19 @@ function allView() {
   });
 
   $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
 };
@@ -324,7 +357,7 @@ function hardView() {
   //$('.hardSurface').show();
   
   $('.all').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.hard').css({
@@ -332,15 +365,15 @@ function hardView() {
   });
 
   $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
 };
@@ -351,11 +384,11 @@ function clayView() {
   //$('.claySurface').show();
   
   $('.all').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.clay').css({
@@ -363,11 +396,11 @@ function clayView() {
   });
 
   $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
 };
@@ -378,15 +411,15 @@ function grassView() {
   //$('.grassSurface').show();
   
   $('.all').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.grass').css({
@@ -394,7 +427,7 @@ function grassView() {
   });
 
   $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
 };
@@ -405,19 +438,19 @@ function carpetView() {
   //$('.carpetSurface').show();
   
   $('.all').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.5)",
+    'color': "rgba(255, 255, 255, 0.15)",
   });
 
   $('.carpet').css({
@@ -439,10 +472,6 @@ function buttonSwapping(event)  {
 
 
 function year03View() {
-  stage.empty();
-
-  //$('.carpetSurface').show();
-
 
   $('.year03').css({
     'color': "white",

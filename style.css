@@ -49,13 +49,13 @@ body {
 .lengths {
     top: 40px;
     left: 280px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.25);
 }
 
-.winners {
+.tourneys {
     top: 40px;
-    left: 580px;
-    color: rgba(255, 255, 255, 0.5);
+    left: 470px;
+    color: rgba(255, 255, 255, 0.25);
 }
 
 .all {
@@ -69,103 +69,109 @@ body {
     font-size: 30px;
     top: 460px;
     left: 50px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .clay {
     font-size: 28px;
     top: 510px;
     left: 50px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .grass {
     font-size: 28px;
     top: 560px;
     left: 50px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .carpet {
     font-size: 28px;
     top: 610px;
     left: 50px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year03 {
-    font-size: 28px;
-    top: 1000px;
-    left: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 650px;
     color: white
 }
 
 .year04 {
-    font-size: 28px;
-    top: 1000px;
-    left: 290px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 750px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year05 {
-    font-size: 28px;
-    top: 1000px;
-    left: 530px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 850px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year06 {
-    font-size: 28px;
-    top: 1000px;
-    left: 770px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 950px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year07 {
-    font-size: 28px;
-    top: 1000px;
-    left: 1010px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 1050px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year08 {
-    font-size: 28px;
-    top: 1000px;
-    left: 1250px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 1150px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year09 {
-    font-size: 28px;
-    top: 1000px;
-    left: 1490px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 1250px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .year10 {
-    font-size: 28px;
-    top: 1000px;
-    left: 1730px;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    top: 1040px;
+    left: 1350px;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .years {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
     font-size: 28px;
     top: 1000px;
     left: 50px;
     color: white
-}
-
-.playerWinner {
-    background-color: rgba(138, 227, 227, 1);
-    position: absolute;
-    border-radius: 100%;
-}
-
-.playerLoser {
-    background-color: rgba(254, 245, 140, 1);
-    position: absolute;
-    border-radius: 100%;
 }
 
 .hover {
