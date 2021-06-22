@@ -4,6 +4,15 @@ let body = $('body');
 let groupedByDate; 
 let groupedByFinalWinners;
 
+const rMatch = 5;
+const lowerBorder = 1020;
+const monthOffSet = 180;
+const matchOffSet = 70;
+const leftWinColor = 'rgba(254, 245, 140, 1)';
+const rightWinColor = 'rgba(166, 242, 242, 1)';
+const leftLoseColor = 'rgba(254, 245, 140, 0.25)';
+const rightLoseColor = 'rgba(166, 242, 242, 0.25)';
+
 let showMatches; 
 showMatches = true;
 
@@ -47,16 +56,17 @@ function prepareData() {
 
   data = gmynd.filterPropType(data, "minutes", "Number");
 
-  //groupedMatchLengths = gmynd.groupData (data, ["minutes", "surface", "tourneyMonth", "tourneyYear"]);
+  groupedMatchLengths = gmynd.groupData (data, 'tourneyYear');
   //console.log(groupedMatchLengths);
-
-  cumulatedLengths = gmynd.cumulateData(data, ["minutes", "surface", "tourneyMonth", "tourneyYear"]);
-  //console.log(cumulatedLengths);
 
 
   // -- Screen: Tourney Winners ---------------------------------------------------------------------------------------------
 
-  groupedByTourneyWinners = gmynd.groupData(finalMatches, "year");
+  finals = gmynd.findAllByValue(data, "round", "F" );
+  console.log("Finals");
+  console.log(finals);
+
+  groupedByTourneyWinners = gmynd.groupData(data, ["tourneyYear", "winner_hand"]);
   //console.log("Tourney Winners");
   //console.log(groupedByTourneyWinners);
 };
@@ -87,78 +97,54 @@ function drawMatches(year = 2003) {
   for (let month in yearData) {
     // get array of matches for this month
     let matches = yearData[month];
-   
-    const rMatch = 7;
-    const circleGap = rMatch * 50;
     
-    let leftWinCount = 0;
-    let rightWinCount = 0;
+    let matchCount = 0;
 
-    let leftLoserCount = 0;
-    let rightLoserCount = 0;
-    
+    console.log(matches);
     matches.forEach((match, j) => {
+      matchCount++;
 
-      let xWinner = (parseInt(month) * 180) - 120;
-      let yWinner = 0;
-
-      let xLoser = (parseInt(month) * 180) - 50;
-      let yLoser = 0;
+      let xLefties = (parseInt(month) * monthOffSet) - 120;
+      let xRighties = xLefties + matchOffSet;
       
-      let winnerDot = $('<div></div>'); //winnerdot
-      let loserDot = $('<div></div>'); //loserdot
+      let leftiesDot = $('<div></div>'); //left players
+      let rightiesDot = $('<div></div>'); //right players
 
-      winnerDot.addClass("winner");
-      let winnerColor = 'rgba(166, 242, 242, 1)';
+      leftiesDot.addClass("lefties");
+      rightiesDot.addClass("righties");
       
-      loserDot.addClass("loser");
-      let loserColor = 'rgba(254, 245, 140, 1)';
-
+      yCoord = lowerBorder - (matchCount * 20);
       
       if (match.winner_hand === "L") {
-        winnerColor = 'rgba(254, 245, 140, 1)';
-        yWinner = 980 - (leftWinCount * 20);
-        leftWinCount++;
+        leftiesColor = leftWinColor;
+        rightiesColor = rightLoseColor;
       } else if (match.winner_hand === "R") {
-        winnerColor = 'rgba(166, 242, 242, 1)';
-        yWinner = 980 - (rightWinCount * 20);
-        xWinner+= 25;
-        rightWinCount++;
-      } 
-      
-      if (match.loser_hand === "L") {
-        loserColor = 'rgba(254, 245, 140, 0.25)';
-        yLoser = 980 - (leftLoserCount * 20);
-        leftLoserCount++
-      } else if (match.loser_hand === "R") {
-        loserColor = 'rgba(166, 242, 242, 0.25)';
-        yLoser = 980 - (rightLoserCount * 20);
-        xLoser+= 25;
-        rightLoserCount++;
-      }
+        rightiesColor = rightWinColor;
+        leftiesColor = leftLoseColor;
+      };
 
-      winnerDot.css({
+      leftiesDot.css({
         'height': rMatch * 2,
         'width': rMatch * 2,
-        'background-color': winnerColor,
+        'background-color': leftiesColor,
         'position': 'absolute',
-        'left': xWinner,
-        'top': yWinner,
+        'left': xLefties,
+        'top': yCoord,
         'border-radius': '100%'
       });
-      
-      loserDot.css({
+    
+      rightiesDot.css({
         'height': rMatch * 2,
         'width': rMatch * 2,
-        'background-color': loserColor,
+        'background-color': rightiesColor,
         'position': 'absolute',
-        'left': xLoser,
-        'top': yLoser,
+        'left': xRighties,
+        'top': yCoord,
         'border-radius': '100%'
       });
-      
-      $('#stage').append(winnerDot);
-      $('#stage').append(loserDot);
+    
+      $('#stage').append(leftiesDot);
+      $('#stage').append(rightiesDot);
 
     });
   }
@@ -185,49 +171,7 @@ function drawLengths () {
   $('.year09').show();
   $('.year10').show();
   
-    const lengthX = stageWidth / 2;
-    const lengthY = stageHeight / 2;
-  
-    cumulatedLengths.forEach(lengths => {
-  
-      let angle = (lengths.tourneyMonth - 2003) * 2.9;
-      angle = gmynd.radians(angle - 90);
-      const rSurface = 25;
-  
-      let xSurface = (lengthX + (Math.cos(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // cosinus vom winkel
-      let ySurface = (lengthY + (Math.sin(angle)) * ((lengths.tourneyMonth - 30) / 4 + 250) - rSurface); // sinus vom winkel
-  
-      let surfaceDot = $('<div></div>');
-      surfaceDot.addClass("Lengths");
-      let surfaceDotColor;
-  
-      if(length.surface == "Hard") {
-        surfaceDotColor = '#79D1D1';
-      } else if (length.surface == "Clay") {
-        surfaceDotColor = '#D45F10'
-      } else if (length.surface == "Grass") {
-        surfaceDotColor = '#ABE184'
-      } else if (length.surface == "Carpet") {
-        surfaceDotColor = '#2856B3'
-      }
-  
-  
-      surfaceDot.css({
-        'height': rSurface * 2,
-        'width': rSurface * 2,
-        'left': xSurface,
-        'top': ySurface,
-        'position': 'absolute',
-        'border-radius': '100%',
-        'background-color': surfaceDotColor,
-    });
-   
-    stage.append(surfaceDot);
-  
-  
-    }
-  
-    )};
+  };
 
 
 // --- Screen 3 -------------------------------------------
