@@ -22,7 +22,7 @@ color: rgba(255, 255, 255, 0.8);
     color: white;
     border: none;
     font-weight: bold ;
-    font-size: 32px;
+    font-size: 30px;
     font-family: "Optima", sans-serif;
 }
 
@@ -41,19 +41,19 @@ body {
 }
 
 .matches {
-    top: 40px;
+    top: 30px;
     left: 50px;
     color: white;
 }
 
 .lengths {
-    top: 40px;
+    top: 30px;
     left: 280px;
     color: rgba(255, 255, 255, 0.25);
 }
 
 .tourneys {
-    top: 40px;
+    top: 30px;
     left: 470px;
     color: rgba(255, 255, 255, 0.25);
 }

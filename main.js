@@ -7,21 +7,24 @@ let groupedByTourney;
 // -- const for Screen: Matches ---------------------------------------------------------------------------------------------
 const rMatch = 5;
 const lowerBorder = 1020;
-const monthOffSet = 180;
+const monthOffSet = 85;
 const matchOffSet = 20;
+
 const leftColor = 'rgba(254, 245, 140, 1)';
 const rightColor = 'rgba(166, 242, 242, 1)';
 const leftLoseColor = 'rgba(254, 245, 140, 0.25)';
 const rightLoseColor = 'rgba(166, 242, 242, 0.25)';
 
+
 // -- const for Screen: Lengths ---------------------------------------------------------------------------------------------
 const rSurface = 3;
-const surfaceColor = {
-hard : 'rgba(255, 255, 255, 1)',
-clay : 'rgba(212, 95, 16, 1)',
-grass : 'rgba(171, 255, 132, 1',
-carpet : 'rgba(40, 86,179, 1)',
-};
+
+let surfaceColor;
+const hardColor = 'rgba(255, 255, 255, 1)';
+const clayColor = 'rgba(212, 95, 16, 1)';
+const grassColor = 'rgba(171, 255, 132, 1';
+const carpetColor = 'rgba(40, 86,179, 1)';
+
 
 let showMatches; 
 showMatches = true;
@@ -38,7 +41,7 @@ $(function () {
   stageWidth = stage.width();
   prepareData();
   drawMatches();
-  drawLengths();
+  //drawLengths();
   drawTourneys ();
 });
 
@@ -65,8 +68,8 @@ function prepareData() {
   // -- Screen: Tourneys ---------------------------------------------------------------------------------------------
 
   finals = gmynd.findAllByValue(data, "round", "F");
-  console.log("Finals");
-  console.log(finals);
+  //console.log("Finals");
+  //console.log(finals);
 
   groupedByTourneys = gmynd.groupData(data, ["tourneyYear", "winner_hand"]);
   //console.log("Tourneys");
@@ -77,6 +80,16 @@ function prepareData() {
 
 function drawMatches(year = 2003) {
   showMatches = true;
+
+  $('.year03').show();
+  $('.year04').show();
+  $('.year05').show();
+  $('.year06').show();
+  $('.year07').show();
+  $('.year08').show();
+  $('.year09').show();
+  $('.year10').show();
+
   $('.all').hide();
   $('.hard').hide();
   $('.clay').hide();
@@ -84,6 +97,7 @@ function drawMatches(year = 2003) {
   $('.carpet').hide();
 
   let yearData = groupedByDate[year];
+  console.log("yearData");
   console.log(yearData);
 
   for (let month in yearData) {
@@ -92,11 +106,12 @@ function drawMatches(year = 2003) {
     
     let matchCount = 0;
 
+    console.log("matches");
     console.log(matches);
     matches.forEach((match, j) => {
       matchCount++;
 
-      let xLefties = (parseInt(month) * monthOffSet) - 120;
+      let xLefties = (parseInt(month) * monthOffSet) - 20;
       let xRighties = xLefties + matchOffSet;
       
       let leftiesDot = $('<div></div>'); //left players
@@ -170,25 +185,25 @@ function drawLengths (year = 2003) {
 
     let lengths = yearData[month]
 
-    console.log(lengths);
+    //console.log("lengths");
+    //console.log(lengths);
     lengths.forEach((lengths, k) =>{
       surfaceCount++
 
-      let xSurface = (parseInt(month) * monthOffSet) - 120;
+      let xSurface = (parseInt(month) * monthOffSet)+ 250;
       let ySurface = lowerBorder - (surfaceCount * 15)
 
       let surfaceDot = $('<div></div>');
       surfaceDot.addClass("surface");
 
-     
       if (lengths.surface === "Hard") {
-        surfaceColor.hard
+        surfaceColor = hardColor
       } else if (lengths.surface === "Clay") {
-        surfaceColor.clay
+        surfaceColor = clayColor
       } else if (lengths.surface === "Grass") {
-        surfaceColor.grass
+        surfaceColor = grassColor
       } else if (lengths.surface === "Carpet") {
-        surfaceColor.carpet
+        surfaceColor = carpetColor
       }; 
 
     surfaceDot.css({
@@ -304,7 +319,7 @@ function lengthsView() {
 
 };
 
-function winnersView() {
+function tourneysView() {
   stage.empty();
 
   drawTourneys();
@@ -460,16 +475,24 @@ function carpetView() {
 };
 
 // -- Years Buttons ---------------
-/*
-$('.year-button').click(buttonSwapping);
-function buttonSwapping(event)  {
-  $('.year-button').css //mach transparent
-  let target = $(event.target)
-  target.css // mach hell
-  console.log(parseInt(target.text()));
-  }
-*/
 
+/*
+  function buttonSwapping(e)  {
+    const target = $(e.target)
+
+    target.css({
+      'color': "white",
+    });
+
+    $('.years').css({
+      'color': "rgba(255, 255, 255, 0.5)"
+    });
+
+    $('.years').click(buttonSwapping);
+
+    console.log(parseInt(target.text()));
+  };
+*/
 
 function year03View() {
 
