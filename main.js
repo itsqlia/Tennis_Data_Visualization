@@ -5,10 +5,10 @@ let groupedByDate;
 let groupedByTourney;
 
 // -- const for Screen: Matches ---------------------------------------------------------------------------------------------
-const rMatch = 5;
+const rMatch = 3;
 const lowerBorder = 1020;
-const monthOffSet = 85;
-const matchOffSet = 20;
+const monthOffSet = 105;
+const matchOffSet = 12;
 
 const leftColor = 'rgba(254, 245, 140, 1)';
 const rightColor = 'rgba(166, 242, 242, 1)';
@@ -40,9 +40,8 @@ $(function () {
   stageHeight = stage.height();
   stageWidth = stage.width();
   prepareData();
+  $('.btn-year').click(buttonSwapping);
   drawMatches();
-  //drawLengths();
-  drawTourneys ();
 });
 
 function prepareData() {
@@ -120,7 +119,7 @@ function drawMatches(year = 2003) {
       leftiesDot.addClass("lefties");
       rightiesDot.addClass("righties");
       
-      let yCoord = lowerBorder - (matchCount * 20);
+      let yCoord = lowerBorder - (matchCount * 12);
       
       if (match.winner_hand === "L") {
         leftiesColor = leftColor;
@@ -476,55 +475,20 @@ function carpetView() {
 
 // -- Years Buttons ---------------
 
-/*
   function buttonSwapping(e)  {
-    const target = $(e.target)
-
+    const target = $(e.target);
+    $('.btn-year').css({
+      'color': "black"//"rgba(255, 255, 255, 0.5)"
+    });
     target.css({
       'color': "white",
     });
-
-    $('.years').css({
-      'color': "rgba(255, 255, 255, 0.5)"
-    });
-
-    $('.years').click(buttonSwapping);
-
-    console.log(parseInt(target.text()));
+    let year = parseInt(target.text());
+    yearView(year);
   };
-*/
 
-function year03View() {
+  function yearView(year) {
 
-  $('.year03').css({
-    'color': "white",
-  });
+    
 
-  $('.year04').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year05').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year06').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year07').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year08').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year09').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-
-  $('.year10').css({
-    'color': "rgba(255, 255, 255, 0.5)",
-  });
-};
+  };

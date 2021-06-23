@@ -26,6 +26,22 @@ color: rgba(255, 255, 255, 0.8);
     font-family: "Optima", sans-serif;
 }
 
+.btn-year {
+    background-color: #242A38;
+    color: white;
+    margin-right: 150px;
+    border: none;
+    font-weight: 200;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#yearButtons {
+    position: absolute;
+    top: 1030px;
+    left: 150px;
+}
+
 body {
     margin: 0;
     background-color: #222222;
@@ -56,6 +72,15 @@ body {
     top: 30px;
     left: 470px;
     color: rgba(255, 255, 255, 0.25);
+}
+
+.years {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 28px;
+    top: 100px;
+    left: 50px;
+    color: white
 }
 
 .all {
@@ -91,87 +116,6 @@ body {
     top: 610px;
     left: 50px;
     color: rgba(255, 255, 255, 0.15);
-}
-
-.year03 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 650px;
-    color: white
-}
-
-.year04 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 750px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year05 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 850px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year06 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 950px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year07 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 1050px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year08 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 1150px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year09 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 1250px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.year10 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 20px;
-    top: 1040px;
-    left: 1350px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.years {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 28px;
-    top: 1000px;
-    left: 50px;
-    color: white
 }
 
 .hover {
