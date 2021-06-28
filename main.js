@@ -6,8 +6,8 @@ let groupedByTourney;
 
 // -- const for Screen: Matches ---------------------------------------------------------------------------------------------
 const rMatch = 3;
-const lowerBorder = 1020;
-const monthOffSet = 105;
+const lowerBorder = 1000;
+const monthOffSet = 125;
 const matchOffSet = 12;
 
 const leftColor = 'rgba(254, 245, 140, 1)';
@@ -17,10 +17,10 @@ const rightLoseColor = 'rgba(166, 242, 242, 0.25)';
 
 
 // -- const for Screen: Lengths ---------------------------------------------------------------------------------------------
-const rSurface = 3;
+const rSurface = 4;
 
 let surfaceColor;
-const hardColor = 'rgba(255, 255, 255, 1)';
+const hardColor = 'rgba(121, 209, 209, 1)';
 const clayColor = 'rgba(212, 95, 16, 1)';
 const grassColor = 'rgba(171, 255, 132, 1';
 const carpetColor = 'rgba(40, 86,179, 1)';
@@ -80,15 +80,6 @@ function prepareData() {
 function drawMatches(year = 2003) {
   showMatches = true;
 
-  $('.year03').show();
-  $('.year04').show();
-  $('.year05').show();
-  $('.year06').show();
-  $('.year07').show();
-  $('.year08').show();
-  $('.year09').show();
-  $('.year10').show();
-
   $('.all').hide();
   $('.hard').hide();
   $('.clay').hide();
@@ -110,7 +101,7 @@ function drawMatches(year = 2003) {
     matches.forEach((match, j) => {
       matchCount++;
 
-      let xLefties = (parseInt(month) * monthOffSet) - 20;
+      let xLefties = (parseInt(month) * monthOffSet) + 180;
       let xRighties = xLefties + matchOffSet;
       
       let leftiesDot = $('<div></div>'); //left players
@@ -167,15 +158,6 @@ function drawLengths (year = 2003) {
   $('.clay').show();
   $('.grass').show();
   $('.carpet').show();
-  
-  $('.year03').show();
-  $('.year04').show();
-  $('.year05').show();
-  $('.year06').show();
-  $('.year07').show();
-  $('.year08').show();
-  $('.year09').show();
-  $('.year10').show();
 
   let yearData = groupedByDate[year];
   
@@ -488,7 +470,7 @@ function carpetView() {
   };
 
   function yearView(year) {
-
-    
-
+    $('.lefties').remove();
+    $('.righties').remove();
+    drawMatches(year);
   };
