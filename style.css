@@ -6,40 +6,72 @@
     position: absolute;
 width: 600px;
 height: 103px;
-left: 1320px;
-top: 40px;
+left: 1700px;
+top: -5px;
 
-font-family: 'Montserrat', sans-serif;
-font-size: 39.06px;
-line-height: 51px;
+font-family: 'Source Sans Pro', sans-serif;
+font-size: 28px;
+font-weight: 400;
 
-color: rgba(255, 255, 255, 0.8);
-}
-
-.btn {
-    position: absolute;
-    background-color: #242A38;
-    color: white;
-    border: none;
-    font-weight: bold ;
-    font-size: 30px;
-    font-family: "Optima", sans-serif;
+color: rgba(255, 255, 255, 0.15);
 }
 
 .btn-year {
     background-color: #242A38;
-    color: white;
-    margin-right: 150px;
+    color: rgba(255, 255, 255, 0.15);
     border: none;
     font-weight: 200;
-    font-size: 25px;
+    font-size: 20px;
+    margin-bottom: 21px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 #yearButtons {
     position: absolute;
-    top: 1030px;
-    left: 150px;
+    top: 300px;
+    left: 30px;
+}
+
+.btn {
+    position: absolute;
+    background-color: #242A38;
+    color: white, rgba(255, 255, 255, 0.15);
+    border: none;
+    font-weight: 600 ;
+    font-size: 25px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.btn-year {
+    background-color: #242A38;
+    color: rgba(255, 255, 255, 0.15);
+    border: none;
+    font-weight: 200;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#yearButtons {
+    position: absolute;
+    top: 400px;
+    left: 20px;
+}
+
+.btn-surface {
+    background-color: #242A38;
+    color: rgba(255, 255, 255, 0.15);
+    margin-left: 5px;
+    border: none;
+    font-weight: 200;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#surfaceButtons {
+    position: absolute;
+    top: 80px;
+    left: 18px;
 }
 
 body {
@@ -58,70 +90,22 @@ body {
 
 .matches {
     top: 30px;
-    left: 50px;
+    left: 20px;
     color: white;
 }
 
 .lengths {
     top: 30px;
-    left: 280px;
+    left: 160px;
     color: rgba(255, 255, 255, 0.25);
 }
 
 .tourneys {
     top: 30px;
-    left: 470px;
+    left: 300px;
     color: rgba(255, 255, 255, 0.25);
-}
-
-.years {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 28px;
-    top: 100px;
-    left: 50px;
-    color: white
-}
-
-.all {
-    font-size: 30px;
-    top: 410px;
-    left: 50px;
-    color: white;
-}
-
-.hard {
-    font-size: 30px;
-    top: 460px;
-    left: 50px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.clay {
-    font-size: 28px;
-    top: 510px;
-    left: 50px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.grass {
-    font-size: 28px;
-    top: 560px;
-    left: 50px;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.carpet {
-    font-size: 28px;
-    top: 610px;
-    left: 50px;
-    color: rgba(255, 255, 255, 0.15);
 }
 
 .hover {
     background-color: gray;
-}
-
-.clicked {
-    background-color: red;
 }

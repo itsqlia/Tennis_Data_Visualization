@@ -8,32 +8,39 @@
 </head>
 
 <body>
+    <div class="header">
+        <p>Tennis Matches <br>
+            2003 - 2010
+        </p>
+    </div>
 
     <div id="stage"></div>
     <div id="hoverLabel"></div>
     <div id="clickLabel"></div>
-    <button onclick="matchesView()" class= "btn matches" > Matches </button>
-    <button onclick="lengthsView()" class= "btn lengths" > Lengths </button>
-    <button onclick="tourneysView()" class= "btn tourneys" > Tournaments </button>
+    
+    <button onclick="matchesView()" class= "btn matches" >Matches</button>
+    <button onclick="lengthsView()" class= "btn lengths" >Lengths</button>
+    <button onclick="tourneysView()" class= "btn tourneys" >Tournaments</button>
 
-    <div id="yearButtons">
-    <button class= "btn-year">2003</button>
-    <button class= "btn-year" >2004</button>
-    <button class= "btn-year" >2005</button>
-    <button class= "btn-year" >2006</button>
-    <button class= "btn-year" >2007</button>
-    <button class= "btn-year" >2008</button>
-    <button class= "btn-year" >2009</button>
-    <button class= "btn-year" >2010</button>
+    <div id = "yearButtons">
+    <button class= "btn-year" >2003</button> <br>
+    <button class= "btn-year" >2004</button> <br>
+    <button class= "btn-year" >2005</button> <br>
+    <button class= "btn-year" >2006</button> <br>
+    <button class= "btn-year" >2007</button> <br>
+    <button class= "btn-year" >2008</button> <br>
+    <button class= "btn-year" >2009</button> <br>
+    <button class= "btn-year" >2010</button> <br>
     </div>
 
 
-    <button onclick="allView()" class= "btn all" > All </button>
-    <button onclick="hardView()" class= "btn hard" > Hard </button>
-    <button onclick="clayView()" class= "btn clay" > Clay </button>
-    <button onclick="grassView()" class= "btn grass" > Grass </button>
-    <button onclick="carpetView()" class= "btn carpet" > Carpet </button>
-
+    <div id = "surfaceButtons">
+    <button class= "btn-surface" >All</button>
+    <button class= "btn-surface" >Hard</button>
+    <button class= "btn-surface" >Clay</button>
+    <button class= "btn-surface" >Grass</button>
+    <button class= "btn-surface" >Carpet</button>
+    </div>
 
     <script src="lib/jquery-3.6.0.min.js"></script>
     <script src="lib/gmynd-min.js"></script>
