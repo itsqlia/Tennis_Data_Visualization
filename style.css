@@ -4,16 +4,16 @@
 
 .header {
     position: absolute;
-width: 600px;
-height: 103px;
-left: 1700px;
-top: -5px;
+    width: 600px;
+    height: 103px;
+    left: 1700px;
+    top: -5px;
 
-font-family: 'Source Sans Pro', sans-serif;
-font-size: 28px;
-font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
 
-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .btn-year {
@@ -23,7 +23,7 @@ color: rgba(255, 255, 255, 0.15);
     font-weight: 200;
     font-size: 20px;
     margin-bottom: 21px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Source Sans Pro", sans-serif;;
 }
 
 #yearButtons {
@@ -46,10 +46,10 @@ color: rgba(255, 255, 255, 0.15);
     background-color: #242A38;
     color: rgba(255, 255, 255, 0.15);
     border: none;
-    font-weight: 200;
+    font-weight: 600;
     font-size: 20px;
     margin-bottom: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 #yearButtons {
@@ -63,9 +63,9 @@ color: rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.15);
     margin-left: 5px;
     border: none;
-    font-weight: 200;
+    font-weight: 600;
     font-size: 22px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:"Source Sans Pro", sans-serif;
 }
 
 #surfaceButtons {
@@ -89,18 +89,19 @@ body {
 }
 
 #hoverName {
+    font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
     margin-left: 80px;
-    margin-top: 8px;
-    font-size: 18px;
+    margin-top: -150px;
+    font-size: 25px;
 }
 
 #hoverRound {
     height: 24px;
     width: 341px;
     margin-left: 80px;
-    margin-top: 8px;
+    margin-top: 18px;
     font-size: 18px;
 }
 
