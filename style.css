@@ -88,6 +88,31 @@ body {
     height: 1080px;
 }
 
+
+#hoverName {
+    height: 24px;
+    width: 341px;
+    margin-left: 80px;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+#hoverLength {
+    height: 24px;
+    width: 341px;
+    margin-left: 80px;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+#hoverSurface {
+    height: 24px;
+    width: 341px;
+    margin-left: 80px;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
 .matches {
     top: 30px;
     left: 20px;
@@ -104,8 +129,4 @@ body {
     top: 30px;
     left: 300px;
     color: rgba(255, 255, 255, 0.25);
-}
-
-.hover {
-    background-color: gray;
 }

@@ -17,7 +17,7 @@ const rightLoseColor = 'rgba(166, 242, 242, 0.25)';
 
 
 // -- const for Screen: Lengths ---------------------------------------------------------------------------------------------
-const rSurface = 4;
+const rSurface = 5;
 
 let surfaceColor;
 const hardColor = 'rgba(121, 209, 209, 1)';
@@ -68,6 +68,9 @@ function prepareData() {
 
 function drawMatches(year = 2003) {
   showMatches = true;
+
+  $('.btn-year').show();
+  $('.btn-surface').hide();
 
   let yearData = groupedByDate[year];
   console.log("yearData");
@@ -126,8 +129,6 @@ function drawMatches(year = 2003) {
       $('#stage').append(leftiesDot);
       $('#stage').append(rightiesDot);
 
-      $('.btn-year').show();
-      $('.btn-surface').hide();
     });
   }
 };
@@ -137,6 +138,9 @@ function drawMatches(year = 2003) {
 
 function drawLengths (year = 2003) {
   showLengths = true;
+
+  $('.btn-year').show();
+  $('.btn-surface').show();
 
   let yearData = groupedByDate[year];
   
@@ -177,10 +181,31 @@ function drawLengths (year = 2003) {
     });
 
     $('#stage').append(surfaceDot);
-    });
 
-    $('.btn-year').show();
-    $('.btn-surface').show();
+    surfaceDot.data(lengths);
+
+    surfaceDot.mouseover(() => {
+      surfaceDot.addClass("hover");
+
+      //Tourney Name
+      $('#hoverName').text(lengths.tourney_name);
+      
+      //Length
+      $('#hoverLength').text(lengths.minutes);
+
+      //Surface
+      $('#hoverSurface').text(lengths.surface);
+      $('#hoverSurface').css({
+        'color': surfaceColor,
+      });
+    });
+    surfaceDot.mouseout(() => {
+      surfaceDot.removeClass("hover");
+      $('#hoverName').text("");
+      $('#hoverLenght').text("");
+      $('#hoverSurface').text("");
+  });
+    });
   }
 };
 
@@ -190,43 +215,35 @@ function drawLengths (year = 2003) {
 function drawTourneys (year = 2003) {
   showTourneys = true;
 
+  $('.btn-year').hide();
+  $('.btn-surface').hide();
+
   let yearData = groupedByDate[year];
   console.log("yearData");
   console.log(yearData);
 
   for (let month in yearData) {
-    // get array of matches for this month
     let tourney = yearData[month];
     
-    let matchCount = 0;
+    let tourneyCount = 0;
 
-    //console.log("matches");
-    //console.log(matches);
     tourney.forEach((tourney, k) => {
-      matchCount++;
+      tourneyCount++;
 
-      /*
-      let xLefties = (parseInt(month) * monthOffSet) + 600;
-      let xRighties = xLefties + matchOffSet;
-      
-      let leftiesDot = $('<div></div>'); //left players
-      let rightiesDot = $('<div></div>'); //right players
-      */
+      const rTourney = 9;
 
-      let angle = (parseInt(month) - 1896) * 2.9;
-      angle = gmynd.radians(angle - 90);
-
-      let xTourney = (Math.cos(angle) * (parseInt(month)*monthOffSet) / 4 + 350);
-      let yTourney = (Math.sin(angle) * (parseInt(month)*monthOffSet) / 4 + 350);
+      let theta = 2.4;
+      let spiralRadius = 5 * Math.sqrt(theta) * 2.4;
+      let xTourney = 160 + Math.cos(theta) * spiralRadius + (k * 190);
+      let yOffset = k % 3 * 260; //0-5 bis 6-11
+      let yTourney = 320 + Math.sin(theta) * spiralRadius + yOffset;
 
       let leftiesDot = $('<div></div>'); //left players
       let rightiesDot = $('<div></div>'); //right players
-
+    
       leftiesDot.addClass("lefties");
       rightiesDot.addClass("righties");
-      
-      let yCoord = lowerBorder - (matchCount * 12);
-      
+
       if (tourney.winner_hand === "L") {
         leftiesColor = leftColor;
         rightiesColor = rightLoseColor;
@@ -254,12 +271,10 @@ function drawTourneys (year = 2003) {
         'top': yTourney,
         'border-radius': '100%'
       });
-    
+
       $('#stage').append(leftiesDot);
       $('#stage').append(rightiesDot);
-
-      $('.btn-year').hide();
-      $('.btn-surface').hide();
+    
     });
   }
 };
@@ -327,6 +342,7 @@ function tourneysView() {
 
   function buttonSwapping(e)  {
     const target = $(e.target);
+
     $('.btn-year').css({
       'color': "rgba(255, 255, 255, 0.15)"
     });
@@ -357,22 +373,22 @@ function tourneysView() {
 
 // -- Surface Buttons ---------------
 
-function surfaceSwapping(event)  {
-  const eventTarget = $(event.target);
-  console.log(eventTarget);
+
+function surfaceSwapping(e)  {
+  const target = $(e.target);
 
   $('.btn-surface').css({
     'color': "rgba(255, 255, 255, 0.15)"
   });
-  eventTarget.css({
+  target.css({
     'color': "white",
   });
-  let surface = eventTarget.text();
-  visibilityByData();
+  let surface = target.text();
+  //visibilityByData();
 };
 
-
-  function visibilityByData(prob, val) {
+/*
+function visibilityByData(prob, val) {
     $('.surface').each (function(){
 
       if (selectedProps.includes($(this).data(prop) == val)){
@@ -388,8 +404,9 @@ function surfaceSwapping(event)  {
       });
   };
 
-  function allView() {
+  function all() {
     stage.empty();
+    drawLengths();
     
     $('.all').css({
       'color': "rgba(255, 255, 255, 1)",
@@ -415,6 +432,7 @@ function surfaceSwapping(event)  {
   
   function hard() {
     stage.empty();
+    visibilityByData("hard");
       
     $('.all').css({
       'color': "rgba(255, 255, 255, 0.15)",
@@ -512,3 +530,4 @@ function surfaceSwapping(event)  {
     });
   
   };
+  */
