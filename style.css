@@ -88,8 +88,15 @@ body {
     height: 1080px;
 }
 
-
 #hoverName {
+    height: 24px;
+    width: 341px;
+    margin-left: 80px;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+#hoverRound {
     height: 24px;
     width: 341px;
     margin-left: 80px;

@@ -191,19 +191,25 @@ function drawLengths (year = 2003) {
       surfaceDot.addClass("hover");
 
       //Tourney Name
-      $('#hoverName').text(lengths.tourney_name);
+      $('#hoverName').text('Tournament : ' + lengths.tourney_name);
       $('#hoverName').css({
+        'color': 'white',
+      });
+
+      //Round
+      $('#hoverRound').text('Round : ' + lengths.round);
+      $('#hoverRound').css({
         'color': 'white',
       });
       
       //Length
-      $('#hoverLength').text(lengths.minutes);
+      $('#hoverLength').text('Match Length : ' + lengths.minutes + 'mins');
       $('#hoverLength').css({
         'color': 'white',
       });
 
       //Surface
-      $('#hoverSurface').text(lengths.surface);
+      $('#hoverSurface').text('Surface : ' + lengths.surface);
       $('#hoverSurface').css({
         'color': surfaceColor,
       });
@@ -364,6 +370,7 @@ function tourneysView() {
     $('.surface').remove();
     drawLengths(year);
     } 
+
   };
 
 // -- Surface Buttons ---------------
