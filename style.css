@@ -88,36 +88,49 @@ body {
     height: 1080px;
 }
 
+#hoverLength {
+    font-family: "Source Sans Pro", sans-serif;
+    color: rgb(255, 231, 194);
+    height: 24px;
+    width: 341px;
+    margin-left: 30px;
+    margin-top: -875px;
+    font-size: 35px;
+}
+
 #hoverName {
     font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 80px;
-    margin-top: -150px;
-    font-size: 25px;
+    margin-left: 30px;
+    margin-top: 28px;
+    font-size: 20px;
 }
 
-#hoverRound {
+#hoverMonth {
+    font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 80px;
-    margin-top: 18px;
+    margin-left: 30px;
+    margin-top: 5px;
     font-size: 18px;
 }
 
-#hoverLength {
+#hoverRound {
+    font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 80px;
-    margin-top: 8px;
+    margin-left: 74px;
+    margin-top: -25px;
     font-size: 18px;
 }
 
 #hoverSurface {
+    font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 80px;
-    margin-top: 8px;
+    margin-left: 116px;
+    margin-top: -23px;
     font-size: 18px;
 }
 

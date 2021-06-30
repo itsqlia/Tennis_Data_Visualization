@@ -60,7 +60,7 @@ function prepareData() {
 
   groupedByDate = gmynd.groupData(data, ["tourneyYear", "tourneyMonth"]);
   //console.log ("date");
-  //console.log (groupedByDate);
+  //console.log (groupedByDate);  
 
   finals = gmynd.findAllByValue(data, "round", "F");
   //console.log(finals);
@@ -160,7 +160,7 @@ function drawLengths(year = 2003) {
 
       let xSurface = lowerBorder + (surfaceCount * 15) - 620;
       let ySurface = (parseInt(month) * monthOffSet) + 150;
-      let rSurf = gmynd.map(length.minutes, 52, 122, 20, 100);
+      let rSurf = gmynd.map(length.minutes, 20, 350, 40, 500);
       r = gmynd.circleRadius(rSurf);
 
       let surfaceDot = $('<div></div>');
@@ -177,8 +177,8 @@ function drawLengths(year = 2003) {
       };
 
       surfaceDot.css({
-        'height': r*2,
-        'width': r*2,
+        'height': r*3,
+        'width': r*3,
         'background-color': surfaceColor,
         'position': 'absolute',
         'left': xSurface - r,
@@ -193,26 +193,60 @@ function drawLengths(year = 2003) {
       surfaceDot.mouseover(() => {
         surfaceDot.addClass("hover");
 
-        //Tourney Name
+         //Length
+         $('#hoverLength').text(length.minutes + ' mins');
+         $('#hoverLength').css({
+           'color': 'rgb(255, 231, 194)',
+         });
+
+        //Name
         $('#hoverName').text(length.tourney_name);
         $('#hoverName').css({
-          'color': 'white',
+          'color': 'rgb(255, 255, 255, 0.75)',
         });
 
+        //Month
+        let displayMonth;
+
+        if (length.tourneyMonth == "01") {
+          displayMonth = "Jan"
+        } else if (length.tourneyMonth == "02"){
+          displayMonth = "Feb"
+        } else if (length.tourneyMonth == "03"){
+          displayMonth = "Mar"
+        } else if (length.tourneyMonth == "04"){
+          displayMonth = "Apr"
+        } else if (length.tourneyMonth == "05"){
+          displayMonth = "May"
+        } else if (length.tourneyMonth == "06"){
+          displayMonth = "Jun"
+        } else if (length.tourneyMonth == "07"){
+          displayMonth = "Jul"
+        } else if (length.tourneyMonth == "08"){
+          displayMonth = "Aug"
+        } else if (length.tourneyMonth == "09"){
+          displayMonth = "Sep"
+        } else if (length.tourneyMonth == "10"){
+          displayMonth = "Oct"
+        } else if (length.tourneyMonth == "11"){
+          displayMonth = "Nov"
+        } else if (length.tourneyMonth == "12"){
+          displayMonth = "Dec"
+        };
+
+        $('#hoverMonth').text(displayMonth + " , ");
+        $('#hoverMonth').css({
+          'color': 'rgb(255, 255, 255, 0.75)',
+        });
+        
         //Round
-        $('#hoverRound').text('Round : ' + length.round);
+        $('#hoverRound').text(length.round + " , ");
         $('#hoverRound').css({
-          'color': 'white',
-        });
-
-        //Length
-        $('#hoverLength').text('Match Length : ' + length.minutes + 'mins');
-        $('#hoverLength').css({
-          'color': 'white',
+          'color': 'rgb(255, 255, 255, 0.75)',
         });
 
         //Surface
-        $('#hoverSurface').text('Surface : ' + length.surface);
+        $('#hoverSurface').text(length.surface);
         $('#hoverSurface').css({
           'color': surfaceColor,
         });
@@ -220,6 +254,7 @@ function drawLengths(year = 2003) {
       surfaceDot.mouseout(() => {
         surfaceDot.removeClass("hover");
         $('#hoverName').text("");
+        $('#hoverMonth').text("");
         $('#hoverRound').text("");
         $('#hoverLength').text("");
         $('#hoverSurface').text("");
@@ -381,19 +416,14 @@ function yearView(year) {
 
 function surfaceSwapping(e) {
   const target = $(e.target);
-  $('.btn-surface').css({
-    color: "gray"
-  });
-  target.css({
-    color: "white"
-  });
-  console.log("selected surface");
+  
   $('.btn-surface').css({
     'color': "rgba(255, 255, 255, 0.15)"
   });
   target.css({
     'color': surfaceColor,
   });
+  
   let surface = target.text();
   visibilityByData("surface", surface);
 };
@@ -413,132 +443,3 @@ function visibilityByData(prop, val) {
   });
 };
 
-function all() {
-  stage.empty();
-  drawLengths();
-
-  $('.all').css({
-    'color': "rgba(255, 255, 255, 1)",
-  });
-
-  $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-};
-
-function hard() {
-  stage.empty();
-  visibilityByData("surface", "Hard");
-
-  $('.all').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.hard').css({
-    'color': "rgba(121, 209, 209, 1)",
-  });
-
-  $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-};
-
-function clay() {
-  stage.empty();
-  visibilityByData("surface", "Clay");
-
-  $('.all').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.clay').css({
-    'color': "rgba(212, 95, 16, 1)",
-  });
-
-  $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-};
-
-function grass() {
-  stage.empty();
-  visibilityByData("surface", "Grass");
-
-  $('.all').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.grass').css({
-    'color': "rgba(171, 255, 132, 1",
-  });
-
-  $('.carpet').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-};
-
-function carpet() {
-  stage.empty();
-  visibilityByData("surface", "Carpet");
-
-  $('.all').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.hard').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.clay').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.grass').css({
-    'color': "rgba(255, 255, 255, 0.15)",
-  });
-
-  $('.carpet').css({
-    'color': "rgba(40, 86,179, 1)",
-  });
-
-};
