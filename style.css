@@ -7,29 +7,13 @@
     width: 600px;
     height: 103px;
     left: 1700px;
-    top: -5px;
+    top: 8px;
 
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 400;
 
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.btn-year {
-    background-color: #242A38;
-    color: rgba(255, 255, 255, 0.15);
-    border: none;
-    font-weight: 200;
-    font-size: 20px;
-    margin-bottom: 21px;
-    font-family: "Source Sans Pro", sans-serif;;
-}
-
-#yearButtons {
-    position: absolute;
-    top: 300px;
-    left: 30px;
+    color: rgba(255, 255, 255, 0.50);
 }
 
 .btn {
@@ -47,14 +31,14 @@
     color: rgba(255, 255, 255, 0.15);
     border: none;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 15px;
     font-family: "Source Sans Pro", sans-serif;
 }
 
 #yearButtons {
     position: absolute;
-    top: 400px;
+    top: 300px;
     left: 20px;
 }
 
@@ -64,14 +48,14 @@
     margin-left: 5px;
     border: none;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 24px;
     font-family:"Source Sans Pro", sans-serif;
 }
 
 #surfaceButtons {
     position: absolute;
-    top: 80px;
-    left: 18px;
+    top: 70px;
+    left: 15px;
 }
 
 body {
@@ -94,7 +78,7 @@ body {
     height: 24px;
     width: 341px;
     margin-left: 30px;
-    margin-top: -875px;
+    margin-top: -890px;
     font-size: 35px;
 }
 

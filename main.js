@@ -177,8 +177,8 @@ function drawLengths(year = 2003) {
       };
 
       surfaceDot.css({
-        'height': r*3,
-        'width': r*3,
+        'height': r*2.5,
+        'width': r*2.5,
         'background-color': surfaceColor,
         'position': 'absolute',
         'left': xSurface - r,
@@ -266,64 +266,49 @@ function drawLengths(year = 2003) {
 
 // --- Screen 3 -------------------------------------------
 
-function drawTourneys(year = 2003) {
-  showTourneys = true;
+function drawTourneys() {
+  showWinners = true;
 
   $('.btn-year').hide();
   $('.btn-surface').hide();
 
-  console.log(finals);
-  finals.forEach((finals, k) => {
-    let finalsCount = 0;
-    finalsCount++;
+    let finalCount = 0;
 
-    const rFinals = 9;
+    console.log(finals);
+    finals.forEach((final, j) => {
+      finalCount++
 
-    let theta = 2.4;
-    let spiralRadius = 5 * Math.sqrt(theta) * 2.4;
-    let xFinals = 160 + Math.cos(theta) * spiralRadius + (k * 190);
-    let yOffset = k % 3 * 260; //0-5 bis 6-11
-    let yFinals = 320 + Math.sin(theta) * spiralRadius + yOffset;
+      const rFinal = 9;
 
-    let leftiesDot = $('<div></div>'); //left players
-    let rightiesDot = $('<div></div>'); //right players
+      let theta = 2.4 * j;
+      let spiralRadius = 5 * Math.sqrt(theta) * 2.4;
+      let xFinal = 160 + Math.cos(theta) * spiralRadius ;
+      let yOffset = j % 3 * 260;
+      let yFinal = 320 + Math.sin(theta) * spiralRadius ;
 
-    leftiesDot.addClass("lefties");
-    rightiesDot.addClass("righties");
+      let finalDot = $('<div></div>');
+      finalDot.addClass("finals");
+      
+      if (final.winner_hand === "L") {
+        finalColor = leftColor;
+      } else if (final.winner_hand === "R") {
+        finalColor = rightColor
+      }
 
-    if (finals.winner_hand === "L") {
-      leftiesColor = leftColor;
-      rightiesColor = rightLoseColor;
-    } else if (finals.winner_hand === "R") {
-      rightiesColor = rightColor;
-      leftiesColor = leftLoseColor;
-    };
+      finalDot.css({
+        "position": "absolute",
+        'background-color': finalColor,
+        'height': rFinal * 2,
+        'width': rFinal * 2,
+        'left': xFinal,
+        'top': yFinal,
+        'border-radius': '100%'
+      });
 
-    leftiesDot.css({
-      'height': rMatch * 2,
-      'width': rMatch * 2,
-      'background-color': leftiesColor,
-      'position': 'absolute',
-      'left': xFinals,
-      'top': yFinals,
-      'border-radius': '100%'
+      $('#stage').append(finalDot);
     });
-
-    rightiesDot.css({
-      'height': rMatch * 2,
-      'width': rMatch * 2,
-      'background-color': rightiesColor,
-      'position': 'absolute',
-      'left': xFinals,
-      'top': yFinals,
-      'border-radius': '100%'
-    });
-
-    $('#stage').append(leftiesDot);
-    $('#stage').append(rightiesDot);
-
-  });
 };
+
 
 
 // -- Screen Switches ---------------------------------------------------------------------------------------------
@@ -416,10 +401,21 @@ function yearView(year) {
 
 function surfaceSwapping(e) {
   const target = $(e.target);
-  
+  console.log(target.index())
   $('.btn-surface').css({
     'color': "rgba(255, 255, 255, 0.15)"
   });
+  
+  if (target.index() == 0) {
+    surfaceColor = hardColor;
+  } else if (target.index() == 1) {
+    surfaceColor = clayColor;
+  } else if (target.index() == 2) {
+    surfaceColor = grassColor;
+  } else if (target.index() == 3) {
+    surfaceColor = carpetColor;
+  };
+
   target.css({
     'color': surfaceColor,
   });
