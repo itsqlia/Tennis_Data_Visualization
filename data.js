@@ -10346,7 +10346,7 @@ let data =
 },{
 	"tourney_name":"Masters Cup",
 	"surface":"Hard",
-	"tourney_date":20061113,
+	"tourney_date":20061013,
 	"round":"SF",
 	"minutes":113,
 	"winner_hand":"R",
@@ -15362,7 +15362,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":80,
 	"winner_hand":"R",
@@ -15370,7 +15370,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":93,
 	"winner_hand":"R",
@@ -15378,7 +15378,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":101,
 	"winner_hand":"R",
@@ -15386,7 +15386,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":107,
 	"winner_hand":"R",
@@ -15666,7 +15666,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"F",
 	"minutes":57,
 	"winner_hand":"R",
@@ -15674,7 +15674,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":94,
 	"winner_hand":"R",
@@ -15682,7 +15682,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":164,
 	"winner_hand":"R",
@@ -15690,7 +15690,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":74,
 	"winner_hand":"R",
@@ -15698,7 +15698,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":68,
 	"winner_hand":"R",
@@ -15794,7 +15794,7 @@ let data =
 },{
 	"tourney_name":"Doha",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":92,
 	"winner_hand":"R",
@@ -15802,7 +15802,7 @@ let data =
 },{
 	"tourney_name":"Doha",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":73,
 	"winner_hand":"R",
@@ -17002,7 +17002,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"QF",
 	"minutes":166,
 	"winner_hand":"L",
@@ -17010,7 +17010,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"QF",
 	"minutes":110,
 	"winner_hand":"L",
@@ -17018,7 +17018,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":57,
 	"winner_hand":"L",
@@ -17026,7 +17026,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":83,
 	"winner_hand":"L",
@@ -17034,7 +17034,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":66,
 	"winner_hand":"L",
@@ -17042,7 +17042,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":56,
 	"winner_hand":"L",
@@ -17050,7 +17050,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":89,
 	"winner_hand":"L",
@@ -17058,7 +17058,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"SF",
 	"minutes":64,
 	"winner_hand":"L",
@@ -17066,7 +17066,7 @@ let data =
 },{
 	"tourney_name":"Adelaide",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"SF",
 	"minutes":98,
 	"winner_hand":"L",
@@ -17378,7 +17378,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"QF",
 	"minutes":80,
 	"winner_hand":"L",
@@ -17386,7 +17386,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R16",
 	"minutes":66,
 	"winner_hand":"L",
@@ -17394,7 +17394,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":96,
 	"winner_hand":"L",
@@ -17402,7 +17402,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"R32",
 	"minutes":68,
 	"winner_hand":"L",
@@ -17410,7 +17410,7 @@ let data =
 },{
 	"tourney_name":"Chennai",
 	"surface":"Hard",
-	"tourney_date":20071231,
+	"tourney_date":20071131,
 	"round":"SF",
 	"minutes":235,
 	"winner_hand":"L",

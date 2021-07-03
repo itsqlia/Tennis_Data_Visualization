@@ -9,6 +9,7 @@ const rMatch = 3;
 const lowerBorder = 1075;
 const monthOffSet = 70;
 const matchOffSet = 12;
+const leftBorder = 600;
 
 const leftColor = 'rgba(254, 245, 140, 1)';
 const rightColor = 'rgba(166, 242, 242, 1)';
@@ -22,6 +23,8 @@ const hardColor = 'rgba(121, 209, 209, 1)';
 const clayColor = 'rgba(212, 95, 16, 1)';
 const grassColor = 'rgba(171, 255, 132, 1';
 const carpetColor = 'rgba(40, 86,179, 1)';
+
+const leftFinalBorder = 200;
 
 let tab=1;
 
@@ -62,8 +65,17 @@ function prepareData() {
   //console.log ("date");
   //console.log (groupedByDate);  
 
-  finals = gmynd.findAllByValue(data, "round", "F");
-  //console.log(finals);
+  finalMatches.forEach(finals => {
+    let date = finals.tourney_date;
+    let year = date.toString().charAt(0) + date.toString().charAt(1) + date.toString().charAt(2) + date.toString().charAt(3);
+    let month = date.toString().charAt(4) + date.toString().charAt(5);
+    //console.log(year, month);
+    finals.tourneyYear = year;
+    finals.tourneyMonth = month;
+  });
+  
+  groupedByFinals = gmynd.groupData(finalMatches, "tourneyYear");
+  //console.log(groupedByFinals);
 };
 
 // --- Screen 1 -------------------------------------------------------------------------------------------------------------
@@ -89,7 +101,7 @@ function drawMatches(year = 2003) {
     matches.forEach((match, i) => {
       matchCount++;
 
-      let xLefties = (parseInt(month) * monthOffSet) + 600;
+      let xLefties = (parseInt(month) * monthOffSet) + leftBorder;
       let xRighties = xLefties + matchOffSet;
 
       let leftiesDot = $('<div></div>'); //left players
@@ -151,16 +163,12 @@ function drawLengths(year = 2003) {
 
     let lengths = yearData[month]
 
-    /*   console.log("lengths");
-      console.log(lengths); */
-      //let currentX=0;
-
     lengths.forEach((length, j) => {
       surfaceCount++
 
       let xSurface = lowerBorder + (surfaceCount * 15) - 620;
       let ySurface = (parseInt(month) * monthOffSet) + 150;
-      let rSurf = gmynd.map(length.minutes, 20, 350, 40, 500);
+      let rSurf = gmynd.map(length.minutes, 6, 350, 40, 500);
       r = gmynd.circleRadius(rSurf);
 
       let surfaceDot = $('<div></div>');
@@ -248,7 +256,7 @@ function drawLengths(year = 2003) {
         //Surface
         $('#hoverSurface').text(length.surface);
         $('#hoverSurface').css({
-          'color': surfaceColor,
+          'color': 'rgb(255, 255, 255, 0.75)',
         });
       });
       surfaceDot.mouseout(() => {
@@ -264,6 +272,7 @@ function drawLengths(year = 2003) {
 };
 
 
+
 // --- Screen 3 -------------------------------------------
 
 function drawTourneys() {
@@ -272,20 +281,37 @@ function drawTourneys() {
   $('.btn-year').hide();
   $('.btn-surface').hide();
 
+  let yearCount = -1;
+  let rowCount = 0;
+  let rowOffset = 500;
+  let rowSplit = 6;
+
+  for (let year in groupedByFinals) {
+    yearCount++;
     let finalCount = 0;
 
-    console.log(finals);
+    if (yearCount % rowSplit == 0){
+      rowCount++;
+      yearCount = 0;
+    };
+
+        let finals = groupedByFinals[year];
+
+    //console.log(finals);
     finals.forEach((final, j) => {
-      finalCount++
+     
+      finalCount++; 
 
+      //console.log(parseInt(year));
       const rFinal = 9;
-
+      
+      
       let theta = 2.4 * j;
-      let spiralRadius = 5 * Math.sqrt(theta) * 2.4;
-      let xFinal = 160 + Math.cos(theta) * spiralRadius ;
-      let yOffset = j % 3 * 260;
-      let yFinal = 320 + Math.sin(theta) * spiralRadius ;
-
+      let spiralRadius = 5 * Math.sqrt(theta) * 1.5;
+      let yearOffset = 280;
+      let xFinal = (Math.cos(theta) * spiralRadius) + (yearCount*yearOffset) + leftFinalBorder;
+      let yFinal = (320 + Math.sin(theta) * spiralRadius) + (rowCount * rowOffset) - 500; 
+      
       let finalDot = $('<div></div>');
       finalDot.addClass("finals");
       
@@ -293,29 +319,31 @@ function drawTourneys() {
         finalColor = leftColor;
       } else if (final.winner_hand === "R") {
         finalColor = rightColor
-      }
+      };
 
       finalDot.css({
         "position": "absolute",
         'background-color': finalColor,
         'height': rFinal * 2,
-        'width': rFinal * 2,
+        'width': rFinal*2,
         'left': xFinal,
         'top': yFinal,
         'border-radius': '100%'
       });
 
       $('#stage').append(finalDot);
+
     });
+  }
 };
-
-
 
 // -- Screen Switches ---------------------------------------------------------------------------------------------
 
 function matchesView() {
   tab = 1;
   stage.empty();
+  resetButtonsColors();
+  resetYearButtons();
   drawMatches();
 
   $('.matches').css({
@@ -336,6 +364,8 @@ function lengthsView() {
   stage.empty();
   tab = 2;
   drawLengths();
+  resetButtonsColors();
+  resetYearButtons();
 
   $('.matches').css({
     'color': "rgba(255, 255, 255, 0.15)",
@@ -355,7 +385,7 @@ function tourneysView() {
   stage.empty();
   tab = 3;
   drawTourneys();
-
+  
   $('.matches').css({
     'color': "rgba(255, 255, 255, 0.15)",
   });
@@ -395,17 +425,18 @@ function yearView(year) {
     drawLengths(year);
   }
 
+  //resetButtonsColors();
 };
 
 // -- Surface Buttons ---------------
 
 function surfaceSwapping(e) {
   const target = $(e.target);
-  console.log(target.index())
+  //console.log(target.index())
   $('.btn-surface').css({
     'color': "rgba(255, 255, 255, 0.15)"
   });
-  
+
   if (target.index() == 0) {
     surfaceColor = hardColor;
   } else if (target.index() == 1) {
@@ -439,3 +470,15 @@ function visibilityByData(prop, val) {
   });
 };
 
+
+function resetButtonsColors(){
+  $('.btn-surface').css({
+    'color': "rgba(255, 255, 255, 0.15)"
+  });
+};
+
+function resetYearButtons(){
+  $('.btn-year').css({
+    'color': "rgba(255, 255, 255, 0.15)"
+  });
+};
