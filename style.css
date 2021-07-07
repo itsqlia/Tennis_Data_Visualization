@@ -6,56 +6,62 @@
     position: absolute;
     width: 600px;
     height: 103px;
-    left: 1700px;
-    top: 8px;
+    left: 1280px;
+    top: 3px;
 
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: right;
+    letter-spacing: 1px;
 
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(131, 138, 177, 0.35);
 }
 
 .btn {
     position: absolute;
-    background-color: #242A38;
-    color: white, rgba(255, 255, 255, 0.15);
+    background-color: rgba(37, 48, 73, 0.15);
+    color: rgba(146, 151, 168, 0.50);
     border: none;
-    font-weight: 600 ;
+    font-weight: bold;
     font-size: 25px;
+    letter-spacing: 2px;
     font-family: "Source Sans Pro", sans-serif;
 }
 
 .btn-year {
-    background-color: #242A38;
-    color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(37, 48, 73, 0.15);
+    color: rgba(146, 151, 168, 0.50);
     border: none;
     font-weight: 600;
     font-size: 22px;
     margin-bottom: 15px;
+    letter-spacing: 1.5 px;
     font-family: "Source Sans Pro", sans-serif;
 }
 
 #yearButtons {
     position: absolute;
     top: 300px;
-    left: 20px;
+    left: 32px;
 }
 
 .btn-surface {
-    background-color: #242A38;
-    color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(37, 48, 73, 0.15);
+    color: rgba(37, 255, 255, 0.15);
     margin-left: 5px;
     border: none;
     font-weight: 600;
     font-size: 24px;
+    letter-spacing: 1px;
     font-family:"Source Sans Pro", sans-serif;
 }
 
 #surfaceButtons {
     position: absolute;
-    top: 70px;
-    left: 15px;
+    top: 75px;
+    left: 26px;
 }
 
 body {
@@ -64,7 +70,7 @@ body {
 }
 
 #stage, #hoverLabel, #clickLabel {
-    background-color: rgba(36, 42, 56, 100);
+    background-color: #253049;
     width: 1920px;
 }
 
@@ -77,7 +83,7 @@ body {
     color: rgb(255, 231, 194);
     height: 24px;
     width: 341px;
-    margin-left: 30px;
+    margin-left: 40px;
     margin-top: -940px;
     font-size: 35px;
 }
@@ -86,7 +92,7 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 30px;
+    margin-left: 40px;
     margin-top: 28px;
     font-size: 20px;
 }
@@ -95,7 +101,7 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 30px;
+    margin-left: 40px;
     margin-top: 5px;
     font-size: 18px;
 }
@@ -104,8 +110,8 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 74px;
-    margin-top: -24px;
+    margin-left: 41px;
+    margin-top: -27px;
     font-size: 18px;
 }
 
@@ -113,25 +119,25 @@ body {
     font-family: "Source Sans Pro", sans-serif;
     height: 24px;
     width: 341px;
-    margin-left: 116px;
-    margin-top: -23px;
+    margin-left: 40px;
+    margin-top: 8px;
     font-size: 18px;
 }
 
 .matches {
     top: 30px;
-    left: 20px;
+    left: 30px;
     color: white;
 }
 
 .lengths {
     top: 30px;
-    left: 160px;
+    left: 180px;
     color: rgba(255, 255, 255, 0.25);
 }
 
 .tourneys {
     top: 30px;
-    left: 300px;
+    left: 340px;
     color: rgba(255, 255, 255, 0.25);
 }

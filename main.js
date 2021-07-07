@@ -24,7 +24,7 @@ const clayColor = 'rgba(212, 95, 16, 1)';
 const grassColor = 'rgba(171, 255, 132, 1';
 const carpetColor = 'rgba(40, 86,179, 1)';
 
-const leftFinalBorder = 200;
+const leftFinalBorder = 250;
 
 let tab=1;
 
@@ -166,9 +166,9 @@ function drawLengths(year = 2003) {
     lengths.forEach((length, j) => {
       surfaceCount++
 
-      let xSurface = lowerBorder + (surfaceCount * 15) - 620;
-      let ySurface = (parseInt(month) * monthOffSet) + 150;
-      let rSurf = gmynd.map(length.minutes, 6, 350, 40, 500);
+      let xSurface = lowerBorder + (surfaceCount * 15) - 650;
+      let ySurface = (parseInt(month) * monthOffSet) + 100;
+      let rSurf = gmynd.map(length.minutes, 20, 120, 30, 300);
       r = gmynd.circleRadius(rSurf);
 
       let surfaceDot = $('<div></div>');
@@ -214,51 +214,68 @@ function drawLengths(year = 2003) {
         });
 
         //Month
-        let displayMonth;
+        /*let displayMonth;
 
         if (length.tourneyMonth == "01") {
-          displayMonth = "Jan"
+          displayMonth = "January"
         } else if (length.tourneyMonth == "02"){
-          displayMonth = "Feb"
+          displayMonth = "February"
         } else if (length.tourneyMonth == "03"){
-          displayMonth = "Mar"
+          displayMonth = "March"
         } else if (length.tourneyMonth == "04"){
-          displayMonth = "Apr"
+          displayMonth = "April"
         } else if (length.tourneyMonth == "05"){
           displayMonth = "May"
         } else if (length.tourneyMonth == "06"){
-          displayMonth = "Jun"
+          displayMonth = "June"
         } else if (length.tourneyMonth == "07"){
-          displayMonth = "Jul"
+          displayMonth = "July"
         } else if (length.tourneyMonth == "08"){
-          displayMonth = "Aug"
+          displayMonth = "August"
         } else if (length.tourneyMonth == "09"){
-          displayMonth = "Sep"
+          displayMonth = "September"
         } else if (length.tourneyMonth == "10"){
-          displayMonth = "Oct"
+          displayMonth = "October"
         } else if (length.tourneyMonth == "11"){
-          displayMonth = "Nov"
-        } else if (length.tourneyMonth == "12"){
-          displayMonth = "Dec"
+          displayMonth = "November"
         };
 
         $('#hoverMonth').text(displayMonth + " , ");
         $('#hoverMonth').css({
           'color': 'rgb(255, 255, 255, 0.75)',
         });
-        
+        */
+
         //Round
-        $('#hoverRound').text(length.round + " , ");
+        
+        let displayRound;
+
+        if (length.round == "R32") {
+          displayRound = "Round 32"
+        } else if (length.round == "R16"){
+          displayRound = "Round 16"
+        } else if (length.round == "QF"){
+          displayRound = "Quarter-final "
+        } else if (length.round == "SF"){
+          displayRound = "Semi-final "
+        } else if (length.round == "F"){
+          displayRound = "Finals"
+        }; 
+        
+        $('#hoverRound').text(displayRound);
         $('#hoverRound').css({
           'color': 'rgb(255, 255, 255, 0.75)',
         });
 
         //Surface
+        /*
         $('#hoverSurface').text(length.surface);
         $('#hoverSurface').css({
           'color': 'rgb(255, 255, 255, 0.75)',
         });
+         */
       });
+
       surfaceDot.mouseout(() => {
         surfaceDot.removeClass("hover");
         $('#hoverName').text("");
@@ -268,10 +285,9 @@ function drawLengths(year = 2003) {
         $('#hoverSurface').text("");
       });
     });
+   
   }
 };
-
-
 
 // --- Screen 3 -------------------------------------------
 
@@ -303,12 +319,12 @@ function drawTourneys() {
       finalCount++; 
 
       //console.log(parseInt(year));
-      const rFinal = 9;
+      const rFinal = 7;
       
       
       let theta = 2.4 * j;
-      let spiralRadius = 5 * Math.sqrt(theta) * 1.5;
-      let yearOffset = 280;
+      let spiralRadius = 5 * Math.sqrt(theta) * 1.7;
+      let yearOffset = 270;
       let xFinal = (Math.cos(theta) * spiralRadius) + (yearCount*yearOffset) + leftFinalBorder;
       let yFinal = (320 + Math.sin(theta) * spiralRadius) + (rowCount * rowOffset) - 500; 
       
@@ -318,7 +334,7 @@ function drawTourneys() {
       if (final.winner_hand === "L") {
         finalColor = leftColor;
       } else if (final.winner_hand === "R") {
-        finalColor = rightColor
+        finalColor = 'rgba(166, 242, 242, 0.5)';
       };
 
       finalDot.css({
@@ -351,11 +367,11 @@ function matchesView() {
   });
 
   $('.lengths').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
   $('.tourneys').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
 };
@@ -368,7 +384,7 @@ function lengthsView() {
   resetYearButtons();
 
   $('.matches').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
   $('.lengths').css({
@@ -376,7 +392,7 @@ function lengthsView() {
   });
 
   $('.tourneys').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
 };
@@ -387,11 +403,11 @@ function tourneysView() {
   drawTourneys();
   
   $('.matches').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
   $('.lengths').css({
-    'color': "rgba(255, 255, 255, 0.15)",
+    'color': "rgba(131, 138, 177, 0.35)",
   });
 
   $('.tourneys').css({
@@ -405,7 +421,7 @@ function buttonSwapping(e) {
   const target = $(e.target);
 
   $('.btn-year').css({
-    'color': "rgba(255, 255, 255, 0.15)"
+    'color': "rgba(131, 138, 177, 0.45)"
   });
   target.css({
     'color': "white",
@@ -432,9 +448,9 @@ function yearView(year) {
 
 function surfaceSwapping(e) {
   const target = $(e.target);
-  //console.log(target.index())
+  console.log(target.index())
   $('.btn-surface').css({
-    'color': "rgba(255, 255, 255, 0.15)"
+    'color': "rgba(131, 138, 177, 0.35)"
   });
 
   if (target.index() == 0) {
@@ -464,21 +480,22 @@ function visibilityByData(prop, val) {
     }
     else {
       $(this).css({
-        'opacity': '0.15'
+        'opacity': '0.10'
       });
     }
   });
 };
 
+// -- Reset Buttons ---------------
 
 function resetButtonsColors(){
   $('.btn-surface').css({
-    'color': "rgba(255, 255, 255, 0.15)"
+    'color': "rgba(131, 138, 177, 0.45)"
   });
 };
 
 function resetYearButtons(){
   $('.btn-year').css({
-    'color': "rgba(255, 255, 255, 0.15)"
+    'color': "rgba(131, 138, 177, 0.45)"
   });
 };

@@ -404,7 +404,7 @@ let data =
 	"surface":"Hard",
 	"round":"R32",
 	"tourney_date":20030224,
-	"minutes":6,
+	"minutes":60,
 	"winner_hand":"R",
 	"loser_hand":"L"
 },{
@@ -12668,7 +12668,7 @@ let data =
 	"surface":"Hard",
 	"tourney_date":20070115,
 	"round":"R32",
-	"minutes":6,
+	"minutes":60,
 	"winner_hand":"R",
 	"loser_hand":"L"
 },{
